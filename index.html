@@ -16,19 +16,45 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 100vh;
+        justify-content: flex-start;
+        min-height: 100vh;
+        margin: 0;
+        padding: 2rem 1rem;
+        box-sizing: border-box;
+    }
+    main {
+        width: 100%;
+        max-width: 860px;
+    }
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
     #logo {
         width: 300px;
         height: auto;
     }
+    .code-of-conduct {
+        margin-top: 2rem;
+        line-height: 1.5;
+    }
 </style>
 <body>
-    <h1>TOPLAP Hong Kong</h1>
-    <img id="logo" src="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg" alt="logo">
-    <p>Instagram: <a href="https://instagram.com/toplap_hk" target="_blank" rel="noopener noreferrer">@toplap_hk</a></p>
-    <p>Modify website: <a href="https://github.com/bytosaur/toplap-hk" target="_blank" rel="noopener noreferrer">github.com/bytosaur/toplap-hk</a></p>
-        
+    <main>
+        <section class="hero">
+            <h1>TOPLAP Hong Kong</h1>
+            <img id="logo" src="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg" alt="logo">
+            <p>Instagram: <a href="https://instagram.com/toplap_hk" target="_blank" rel="noopener noreferrer">@toplap_hk</a></p>
+            <p>Modify website: <a href="https://github.com/bytosaur/toplap-hk" target="_blank" rel="noopener noreferrer">github.com/bytosaur/toplap-hk</a></p>
+        </section>
+
+        <section class="code-of-conduct">
+            <h2>Code of Conduct</h2>
+            <p>We are dedicated to providing a harassment-free experience for everyone, regardless of gender, gender identity and expression, age, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion (or lack thereof), technology choices, and so on. This applies both in person or via online media.
+            </p>
+        </section>
+    </main>
 </body>
 </html>
