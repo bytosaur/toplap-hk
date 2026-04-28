@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPLAP HK — Live Coding Hong Kong</title>
+  <meta name="description" content="TOPLAP HK is Hong Kong's community for live coding — improvised music, visuals, and performance through code." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0a0a'/><text y='24' font-size='22' font-family='monospace' fill='%2300ff88'>T</text></svg>" />
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav>
+    <a class="nav-logo" href="#hero">TOPLAP <span>HK</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <section id="hero">
+    <canvas id="canvas-bg"></canvas>
+    <div class="hero-content">
+      <p class="hero-tag">Hong Kong chapter of TOPLAP</p>
+      <h1>
+        <span id="typewriter" data-text="Live Code.">Live Code.</span><br />
+        <span class="accent">Make Music.</span><br />
+        <span class="accent2">Make Art.</span>
+      </h1>
+      <p class="hero-sub">
+        TOPLAP HK unites Hong Kong's community of live coders — performers who
+        write and modify code in real time to create improvised music, visuals,
+        and new forms of expression.
+      </p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#events">Upcoming Events</a>
+        <a class="btn btn-outline" href="#community">Join Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Live code ticker ─────────────────────────────────── -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="hl">d1 $ sound "bd sd" # speed 1.5</span>
+      <span>|></span>
+      <span class="hl">setBPM 120</span>
+      <span>--</span>
+      <span>Synth(\saw, [freq: 440]).play</span>
+      <span>|></span>
+      <span class="hl">Pdef(\loop, Pbind(\instrument, \default))</span>
+      <span>--</span>
+      <span>play (note 60) (beat 1)</span>
+      <span>|></span>
+      <span class="hl">d2 $ every 4 (fast 2) $ sound "hh"</span>
+      <span>--</span>
+      <span>loop 4 |> reverb 0.8</span>
+      <span>|></span>
+      <!-- duplicate for seamless loop -->
+      <span class="hl">d1 $ sound "bd sd" # speed 1.5</span>
+      <span>|></span>
+      <span class="hl">setBPM 120</span>
+      <span>--</span>
+      <span>Synth(\saw, [freq: 440]).play</span>
+      <span>|></span>
+      <span class="hl">Pdef(\loop, Pbind(\instrument, \default))</span>
+      <span>--</span>
+      <span>play (note 60) (beat 1)</span>
+      <span>|></span>
+      <span class="hl">d2 $ every 4 (fast 2) $ sound "hh"</span>
+      <span>--</span>
+      <span>loop 4 |> reverb 0.8</span>
+    </div>
+  </div>
+
+  <!-- ── About ────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <h2>What is TOPLAP HK?</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            <strong>TOPLAP</strong> (Temporary Organisation for the Proliferation
+            of Live Algorithm Programming) is a global community dedicated to live
+            coding — the practice of writing and modifying algorithms in real time
+            as a performance art.
+          </p>
+          <p>
+            <strong>TOPLAP HK</strong> is the Hong Kong chapter, bringing together
+            musicians, visual artists, hackers, and curious minds across the city.
+            We host workshops, performances, open sessions, and online discussions
+            to explore the intersection of code, music, and art.
+          </p>
+          <p>
+            Whether you've been live coding for years or you've never written a
+            line of code, you are welcome here. We believe that <strong>showing
+            your screens</strong> — making the process visible — is at the heart
+            of live coding culture.
+          </p>
+        </div>
+        <div class="manifesto-box" role="complementary" aria-label="TOPLAP Manifesto highlights">
+          <p class="comment">// TOPLAP Manifesto (selected)</p>
+          <ul>
+            <li>Show us your screens</li>
+            <li>Obscurantism is dangerous</li>
+            <li>No backup musicians allowed</li>
+            <li>Bring it into the open</li>
+            <li>Collaboration is encouraged</li>
+            <li>Live coding is not about the tools</li>
+            <li>The code is the score</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Events ───────────────────────────────────────────── -->
+  <section id="events">
+    <div class="section-inner">
+      <p class="section-label">Events</p>
+      <h2>Upcoming &amp; Recent</h2>
+      <div class="events-grid">
+
+        <article class="event-card">
+          <p class="event-date">2026-05-10 · 20:00 HKT</p>
+          <h3 class="event-title">Open Jam — May Edition</h3>
+          <p class="event-desc">
+            Monthly drop-in live coding session open to all skill levels.
+            Bring your laptop, your code, and your curiosity.
+            Venue: Foo Jam Space, Sham Shui Po.
+          </p>
+          <span class="event-tag">performance</span>
+          <span class="event-tag">open-session</span>
+        </article>
+
+        <article class="event-card">
+          <p class="event-date">2026-05-24 · 14:00 HKT</p>
+          <h3 class="event-title">TidalCycles Workshop</h3>
+          <p class="event-desc">
+            Hands-on introduction to TidalCycles for live music coding.
+            No prior experience required. Laptops provided upon request.
+          </p>
+          <span class="event-tag">workshop</span>
+          <span class="event-tag">beginners</span>
+        </article>
+
+        <article class="event-card">
+          <p class="event-date">2026-06-07 · 19:30 HKT</p>
+          <h3 class="event-title">TOPLAP HK × CHAT</h3>
+          <p class="event-desc">
+            A collaborative performance evening at the Centre for Heritage, Arts
+            and Textile. Live-coded sound and generative visuals in dialogue.
+          </p>
+          <span class="event-tag">performance</span>
+          <span class="event-tag">collaboration</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Tools ────────────────────────────────────────────── -->
+  <section id="tools">
+    <div class="section-inner">
+      <p class="section-label">Tools</p>
+      <h2>Popular Live Coding Environments</h2>
+      <div class="tools-grid">
+
+        <a class="tool-card" href="https://tidalcycles.org" target="_blank" rel="noopener">
+          <p class="tool-name">TidalCycles</p>
+          <p class="tool-desc">Pattern-based live music coding in Haskell. Beloved for rhythmic complexity and mini-notation.</p>
+        </a>
+
+        <a class="tool-card" href="https://supercollider.github.io" target="_blank" rel="noopener">
+          <p class="tool-name">SuperCollider</p>
+          <p class="tool-desc">Powerful audio synthesis and algorithmic composition environment with a built-in language (sclang).</p>
+        </a>
+
+        <a class="tool-card" href="https://sonic-pi.net" target="_blank" rel="noopener">
+          <p class="tool-name">Sonic Pi</p>
+          <p class="tool-desc">Ruby-based live coding synth designed for education. Great starting point for beginners.</p>
+        </a>
+
+        <a class="tool-card" href="https://hydra.ojack.xyz" target="_blank" rel="noopener">
+          <p class="tool-name">Hydra</p>
+          <p class="tool-desc">Browser-based live visual coding inspired by modular video synthesis. No installation needed.</p>
+        </a>
+
+        <a class="tool-card" href="https://strudel.cc" target="_blank" rel="noopener">
+          <p class="tool-name">Strudel</p>
+          <p class="tool-desc">TidalCycles in the browser. JavaScript implementation — run it instantly from any device.</p>
+        </a>
+
+        <a class="tool-card" href="https://foxdot.org" target="_blank" rel="noopener">
+          <p class="tool-name">FoxDot</p>
+          <p class="tool-desc">Python live coding environment using SuperCollider as its audio backend.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Community ─────────────────────────────────────────── -->
+  <section id="community">
+    <div class="section-inner">
+      <p class="section-label">Community</p>
+      <h2>Get Involved</h2>
+      <div class="community-inner">
+        <div class="community-text">
+          <p>
+            TOPLAP HK is a volunteer-run community. We welcome performers,
+            learners, organisers, and anyone curious about the intersection
+            of code and creativity.
+          </p>
+          <p>
+            Join our online spaces to stay updated on events, share your
+            work, ask questions, and connect with live coders across Hong Kong
+            and beyond.
+          </p>
+          <p>
+            Want to perform, host a workshop, or collaborate? Reach out —
+            the more the better.
+          </p>
+        </div>
+        <div class="community-links">
+          <a class="community-link" href="https://discord.gg/toplap" target="_blank" rel="noopener">
+            <span class="icon">💬</span>
+            <span>
+              Discord<br />
+              <span class="link-label">Chat &amp; community discussions</span>
+            </span>
+          </a>
+          <a class="community-link" href="https://toplap.org" target="_blank" rel="noopener">
+            <span class="icon">🌐</span>
+            <span>
+              toplap.org<br />
+              <span class="link-label">Global TOPLAP website &amp; wiki</span>
+            </span>
+          </a>
+          <a class="community-link" href="mailto:hello@toplap.hk">
+            <span class="icon">✉️</span>
+            <span>
+              hello@toplap.hk<br />
+              <span class="link-label">Get in touch directly</span>
+            </span>
+          </a>
+          <a class="community-link" href="https://github.com/bytosaur/toplap-hk" target="_blank" rel="noopener">
+            <span class="icon">⌨</span>
+            <span>
+              GitHub<br />
+              <span class="link-label">Contribute to this website</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 TOPLAP HK — part of <a href="https://toplap.org" target="_blank" rel="noopener">TOPLAP</a></span>
+      <span>// show your screens</span>
+      <span><a href="https://github.com/bytosaur/toplap-hk" target="_blank" rel="noopener">source on GitHub</a></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
