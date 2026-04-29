@@ -87,6 +87,8 @@
     </script>
     <script src="src/lib/p5.min.js"></script>
     <script src="src/lib/p5.wrapper.js"></script>
+    <!-- <script src="src/lib/p5.glitch.js"></script> -->
+     <script src="https://cdn.jsdelivr.net/npm/p5.glitch@latest/p5.glitch.js"></script>
   </head>
   <style>
     :root {
@@ -138,6 +140,12 @@
       height: auto;
       margin: 10px auto;
     }
+    .p5Canvas {
+      display: block;
+      width: 150px;
+      height: auto;
+      margin: 10px auto;
+    }
     #about {
       text-align: center;
       width: 80%;
@@ -156,12 +164,14 @@
   <body>
     <main>
       <div id="title">TOPLAP<br />Hong Kong</div>
-
-      <img
+    <div id="sketch-holder" id="logo">
+    <!-- Our sketch will go here! -->
+    </div>
+      <!-- <img
         id="logo"
         src="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg"
         alt="logo"
-      />
+      /> -->
 
       <section id="about">
         <!-- <h2>About</h2> -->
@@ -232,5 +242,89 @@
       </section>
     </main>
   </body>
-  <script></script>
+  <script>
+
+    let glitch;
+    let canvas_size = 300;
+    let clickCount = 0;
+
+    function setup() {
+        let canvas = createCanvas(canvas_size, canvas_size);
+        canvas.parent('sketch-holder'); // Move the canvas into the div with id 'sketch-holder'
+        loadImage('https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg', img => {
+            image(img, 0, 0, canvas_size, canvas_size);
+        });
+
+        /* create glitch instance */
+        glitch = new Glitch();
+        // /* load image */
+        glitch.loadType('jpg'); // specify jpeg file glitching, default
+        glitch.loadQuality(10); // optionally crunch to low quality
+        // glitch.loadImage('static/img/logo_smallest.jpeg'); // load image by path
+        // /* build and display image */
+        // glitch.buildImage(); // creates image from glitched data
+        // image(glitch.image, 0, 0); // display glitched image
+
+    }
+
+    let animate_count = 0;
+    let max_animate_count = 30;
+    function draw() {
+        let x = 0;
+        let y = 0;
+        if (clickCount >= 3 && animate_count < max_animate_count) {
+            glitch.loadImage('static/img/logo_smallest.jpeg',
+                () => {
+                    if (Math.random() < 0.9) {    
+                        glitch.randomBytes(Math.random()*10); // randomize 10 bytes  
+                    }      
+                    if (clickCount >= 8 && Math.random() < 0.4) {  
+                        glitch.replaceBytes(Math.random() * 255, Math.random() * 255); // find + replace all
+                    }
+                    if (clickCount >= 14 && Math.random() < 0.2) {
+                        glitch.replaceHex('ffdb00430001','ffdb004300ff'); // jpg quant table
+                    }
+                    if (clickCount >= 20 && Math.random() < 0.1) {
+                        glitch.replaceHex('ffc000110800','ffc0001100ff'); // jpg frame header
+                    }
+                    if (clickCount >= 25 && Math.random() < 0.1) {
+                        glitch.replaceHex('ffd9','0000'); // jpg end of image
+                    }
+                    if (clickCount >= 30 && Math.random() < 0.1) {
+                        glitch.replaceHex('ffdb00430101', 'ffdb004301ff'); // soo colorful!
+                    }
+                    if (clickCount >= 10 && Math.random() < 0.1) {
+                        x = Math.random() * 200 - 100;
+                        y = Math.random() * 200 - 100;
+                    }
+
+                    /* build and display image */
+                    glitch.buildImage(); // creates image from glitched data
+                    image(glitch.image, x, y, canvas_size, canvas_size); // display glitched image  
+                }
+            ); 
+        }
+        animate_count++;
+    }
+
+    function glitchImage() {            
+        if (clickCount >= 3) {    
+            animate_count = 0;
+            max_animate_count = Math.random() * 13; // randomize animation length
+        } 
+        clickCount++;   
+    }
+
+    window.onload = function() {
+        console.log('Document loaded, setting up click listener on canvas...');
+        const p5Canvas = document.getElementById('defaultCanvas0'); // p5.js creates a canvas with this id by default
+        if (!p5Canvas) {
+            console.error('Canvas element not found!');
+            return;
+        }
+        p5Canvas.addEventListener('click', glitchImage);
+    };
+
+
+  </script>
 </html>
