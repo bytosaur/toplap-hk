@@ -145,6 +145,7 @@
       width: 150px;
       height: auto;
       margin: 10px auto;
+      cursor: var(--cursor-img) 14 0, auto;
     }
     #about {
       text-align: center;
@@ -230,7 +231,7 @@
             workshops and meet-ups.
           </li>
           <li>
-            Contribute to this
+            Contributing to this
             <a
               href="https://github.com/bytosaur/toplap-hk"
               target="_blank"
@@ -251,24 +252,26 @@
     function setup() {
         let canvas = createCanvas(canvas_size, canvas_size);
         canvas.parent('sketch-holder'); // Move the canvas into the div with id 'sketch-holder'
-        loadImage('https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg', img => {
+        loadImage('static/img/logo_smallest.jpeg', img => {
             image(img, 0, 0, canvas_size, canvas_size);
         });
 
-        /* create glitch instance */
         glitch = new Glitch();
-        // /* load image */
-        glitch.loadType('jpg'); // specify jpeg file glitching, default
-        glitch.loadQuality(10); // optionally crunch to low quality
-        // glitch.loadImage('static/img/logo_smallest.jpeg'); // load image by path
-        // /* build and display image */
-        // glitch.buildImage(); // creates image from glitched data
-        // image(glitch.image, 0, 0); // display glitched image
+        glitch.loadType('jpg'); 
+        glitch.loadQuality(1);     
+                glitch.limitBytes(0, 1.0); // Only glitch from 20% to 100% of the file
+        glitch.loadImage('static/img/logo_smallest.jpeg', () => {
+            // glitch.randomBytes(Math.random()*100); // randomize 10 bytes 
+            // glitch.replaceBytes(Math.random() * 255, Math.random() * 255); // find + replace all
+            glitch.buildImage(); // creates image from glitched data
+            image(glitch.image, 0, 0, canvas_size, canvas_size); // display original image
+        });
 
     }
 
     let animate_count = 0;
     let max_animate_count = 30;
+
     function draw() {
         let x = 0;
         let y = 0;
@@ -276,22 +279,23 @@
             glitch.loadImage('static/img/logo_smallest.jpeg',
                 () => {
                     if (Math.random() < 0.9) {    
-                        glitch.randomBytes(Math.random()*10); // randomize 10 bytes  
+                        glitch.randomBytes(Math.random()*100); // randomize 10 bytes  
                     }      
-                    if (clickCount >= 8 && Math.random() < 0.4) {  
-                        glitch.replaceBytes(Math.random() * 255, Math.random() * 255); // find + replace all
+                    if (clickCount >= 8 && Math.random() < 0.4) {         
+                         glitch.replaceHex('ffdb00430101','ffdb004301'+Math.floor(Math.random()*65536).toString()); // colorful!
+
                     }
                     if (clickCount >= 14 && Math.random() < 0.2) {
-                        glitch.replaceHex('ffdb00430001','ffdb004300ff'); // jpg quant table
+                        glitch.replaceHex('ffdb00430001','ffdb004300'+Math.floor(Math.random()*65536).toString()); // jpg quant table
                     }
                     if (clickCount >= 20 && Math.random() < 0.1) {
-                        glitch.replaceHex('ffc000110800','ffc0001100ff'); // jpg frame header
+                        glitch.replaceBytes(Math.random() * 16, Math.random() * 255); // find + replace all
                     }
                     if (clickCount >= 25 && Math.random() < 0.1) {
                         glitch.replaceHex('ffd9','0000'); // jpg end of image
                     }
                     if (clickCount >= 30 && Math.random() < 0.1) {
-                        glitch.replaceHex('ffdb00430101', 'ffdb004301ff'); // soo colorful!
+                        glitch.pixelate(0.9); // pixelate by 10%
                     }
                     if (clickCount >= 10 && Math.random() < 0.1) {
                         x = Math.random() * 200 - 100;
@@ -307,6 +311,21 @@
         animate_count++;
     }
 
+    // function draw () {
+    //         glitch.resetBytes();
+    //         glitch.limitBytes(0, 1.0); // Only glitch from 20% to 100% of the file
+    //         // glitch.replaceHex('ffdb00430101', 'ffdb004301ff'); // soo colorful!
+    //                     // glitch.replaceHex('ffd9','0000'); // jpg end of image
+    //         // glitch.replaceBytes(Math.random() * 255, Math.random() * 255); // find + replace all
+    //         // glitch.pixelate(0.9); // pixelate by 10%
+
+    //                                 // glitch.replaceHex('ffdb00430101', 'ffdb004301ff'); // soo colorful!
+
+
+    //         glitch.buildImage(); // creates image from glitched data
+    //         image(glitch.image, 0, 0, canvas_size, canvas_size); // display original image
+    // }
+
     function glitchImage() {            
         if (clickCount >= 3) {    
             animate_count = 0;
@@ -316,8 +335,7 @@
     }
 
     window.onload = function() {
-        console.log('Document loaded, setting up click listener on canvas...');
-        const p5Canvas = document.getElementById('defaultCanvas0'); // p5.js creates a canvas with this id by default
+        const p5Canvas = document.getElementById('defaultCanvas0');
         if (!p5Canvas) {
             console.error('Canvas element not found!');
             return;
