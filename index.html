@@ -281,12 +281,12 @@
                     if (Math.random() < Math.exp(-animate_count/10) + 0.2) { // more random at the beginning of animation
                         glitch.randomBytes(Math.random()*100); // randomize 10 bytes  
                     }      
+                    if (clickCount >= 8 && Math.random() < 0.4) {         
+                         glitch.replaceHex('ffdb00430101','ffdb004301'+Math.floor(Math.random()*255).toString()); // colorful!
+                    }
                     if (clickCount >= 10 && Math.random() < 0.1) {
                         x = Math.random() * 200 - 100;
                         y = Math.random() * 200 - 100;
-                    }
-                    if (clickCount >= 8 && Math.random() < 0.4) {         
-                         glitch.replaceHex('ffdb00430101','ffdb004301'+Math.floor(Math.random()*255).toString()); // colorful!
                     }
                     if (clickCount >= 14 && Math.random() < 0.2) {
                         glitch.replaceHex('ffdb00430001','ffdb004300'+Math.floor(Math.random()*255).toString()); // jpg quant table
