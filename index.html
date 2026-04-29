@@ -1,92 +1,236 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TOPLAP Hong Kong is a live coding community sharing events, resources, and safer-space values for algorave and creative coding practice.">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="TOPLAP Hong Kong">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="canonical" href="https://toplap-hk.org/">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-    <link rel="shortcut icon" href="favicon_io/favicon.ico">
-    <link rel="manifest" href="favicon_io/site.webmanifest">
-    <meta name="theme-color" content="#ffffff">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TOPLAP Hong Kong is a live coding community sharing events, resources, and safer-space values for algorave and creative coding practice."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="TOPLAP Hong Kong" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- favicon -->
+    <link rel="canonical" href="https://toplap-hk.org/" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="static/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="static/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="static/favicon_io/favicon-16x16.png"
+    />
+    <link rel="shortcut icon" href="static/favicon_io/favicon.ico" />
+    <link rel="manifest" href="static/favicon_io/site.webmanifest" />
+    <!-- fonts -->
+    <link
+      href="static/fonts/Ranade_Complete/Fonts/WEB/css/ranade.css"
+      rel="stylesheet"
+    />
+    <link
+      href="static/fonts/ClashDisplay_Complete/Fonts/WEB/css/clash-display.css"
+      rel="stylesheet"
+    />
+    <meta name="theme-color" content="#ffffff" />
     <title>TOPLAP Hong Kong | Live Coding Community</title>
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://toplap-hk.org/">
-    <meta property="og:title" content="TOPLAP Hong Kong | Live Coding Community">
-    <meta property="og:description" content="Live coding community in Hong Kong: events, resources, and a safer, inclusive space for algorave and creative coding.">
-    <meta property="og:image" content="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg">
-    <meta property="og:site_name" content="TOPLAP Hong Kong">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TOPLAP Hong Kong | Live Coding Community">
-    <meta name="twitter:description" content="Live coding community in Hong Kong: events, resources, and a safer, inclusive space for algorave and creative coding.">
-    <meta name="twitter:image" content="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg">
-    <link href="fonts/Ranade_Complete/Fonts/WEB/css/ranade.css" rel="stylesheet">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toplap-hk.org/" />
+    <meta
+      property="og:title"
+      content="TOPLAP Hong Kong | Live Coding Community"
+    />
+    <meta
+      property="og:description"
+      content="Live coding community in Hong Kong: events, resources, and a safer, inclusive space for algorave and creative coding."
+    />
+    <meta
+      property="og:image"
+      content="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg"
+    />
+    <meta property="og:site_name" content="TOPLAP Hong Kong" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="TOPLAP Hong Kong | Live Coding Community"
+    />
+    <meta
+      name="twitter:description"
+      content="Live coding community in Hong Kong: events, resources, and a safer, inclusive space for algorave and creative coding."
+    />
+    <meta
+      name="twitter:image"
+      content="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg"
+    />
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://toplap-hk.org/#organization",
-      "name": "TOPLAP Hong Kong",
-      "url": "https://toplap-hk.org/",
-      "description": "Live coding community in Hong Kong focused on algorave, creative coding, and inclusive participation.",
-      "logo": "https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg",
-      "sameAs": [
-        "https://instagram.com/toplap_hk",
-        "https://github.com/bytosaur/toplap-hk"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://toplap-hk.org/#organization",
+        "name": "TOPLAP Hong Kong",
+        "url": "https://toplap-hk.org/",
+        "description": "Live coding community in Hong Kong focused on algorave, creative coding, and inclusive participation.",
+        "logo": "https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg",
+        "sameAs": [
+          "https://instagram.com/toplap_hk",
+          "https://github.com/bytosaur/toplap-hk"
+        ]
+      }
     </script>
-</head>
-<style>
+    <script src="src/lib/p5.min.js"></script>
+    <script src="src/lib/p5.wrapper.js"></script>
+  </head>
+  <style>
+    :root {
+      /* --cursor-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ctext y='28' font-size='26'%3E%F0%9F%8D%9E%3C/text%3E%3C/svg%3E"); */
+      --cursor-img: url("static/icons/cursor32.png");
+      --gaps: 1rem;
+    }
+
     body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 100vh;
-        margin: 0;
-        padding: 2rem 1rem;
-        box-sizing: border-box;
-        font-family: 'Ranade-Regular', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      font-family: "Ranade-Regular", sans-serif;
+      /* cursor: var(--cursor-img) 4 4, auto; */
+    }
+    a,
+    button {
+      cursor:
+        var(--cursor-img) 4 4,
+        pointer;
     }
     main {
-        width: 100%;
-        max-width: 860px;
+      width: 100%;
+      max-width: 750px;
+      text-align: justify;
     }
-    .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    #title {
+      font-family: "ClashDisplay-Regular", sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
+      display: block;
+      text-align: center;
+    }
+    h2 {
+      font-family: "ClashDisplay-Regular", sans-serif;
+      font-size: 1.5rem;
+      margin: 0rem;
+      font-weight: 400;
     }
     #logo {
-        width: 300px;
-        height: auto;
+      display: block;
+      width: 150px;
+      height: auto;
+      margin: 10px auto;
     }
-    .code-of-conduct {
-        margin-top: 2rem;
-        line-height: 1.5;
+    #about {
+      text-align: center;
+      width: 80%;
+      margin: 0 auto;
     }
-</style>
-<body>
-    <main>
-        <section class="hero">
-            <h1>TOPLAP Hong Kong</h1>
-            <img id="logo" src="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg" alt="logo">
-            <p>Instagram: <a href="https://instagram.com/toplap_hk" target="_blank" rel="noopener noreferrer">@toplap_hk</a></p>
-            <p>Contribute to this <a href="https://github.com/bytosaur/toplap-hk" target="_blank" rel="noopener noreferrer">website</a></p>
-        </section>
+    .quote::before {
+        content: '\00300C';
+        /* Opening quotation mark */
+    }
 
-        <section class="code-of-conduct">
-            <h2>Code of Conduct</h2>
-            <p>We are dedicated to providing a harassment-free experience for everyone, regardless of gender, gender identity and expression, age, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion (or lack thereof), technology choices, and so on. This applies both in person or via online media.
-            </p>
-        </section>
+    .quote::after {
+        content: '\00300D';
+        /* Closing quotation mark */
+    }
+  </style>
+  <body>
+    <main>
+      <div id="title">TOPLAP<br />Hong Kong</div>
+
+      <img
+        id="logo"
+        src="https://myifgsdao5ohbjji.public.blob.vercel-storage.com/logo_smaller.jpg"
+        alt="logo"
+      />
+
+      <section id="about">
+        <!-- <h2>About</h2> -->
+        <p class="quote">
+          TOPLAP Hong Kong is an inclusive live coding community sharing
+          resources, experience and knowledge for human-centered algorithmic
+          music and visuals. TOPLAP Hong Kong is non-commercial. TOPLAP Hong
+          Kong is like having a picknick with your family - literally.
+        </p>
+      </section>
+
+      <br />
+      <br />
+      <section id="code-of-conduct">
+        <h2>Inclusivity</h2>
+        <p>
+          Anyone is welcome who is committed to fostering an environment that respects and
+          promotes the dignity, rights, and contributions of all individuals,
+          regardless of characteristics including race, ethnicity, caste, color,
+          age, physical characteristics, neurodiversity, disability, sex or
+          gender, gender identity or expression, sexual orientation, language,
+          philosophy or religion, national or social origin, socio-economic
+          position, level of education, or other status.
+        </p>
+      </section>
+      <br />
+      <section id="references">
+        <h2>References</h2>
+        <p>
+            <ul>
+                <li>What is live coding? (TODO)</li>               
+                <li><a href="https://toplap.org/wiki/ManifestoDraft" target="_blank" rel="noopener noreferrer">TOPLAP ManifestoDraft</a></li>
+                <li>TOPLAP HK records (soon)</li>
+            </ul>
+        </p>
+      <br />
+      <section id="support">
+        <h2>Support Us</h2>
+        <p>
+          TOPLAP Hong Kong is a non-commercial project run by volunteers. If you
+          would like to support us, please consider:
+        </p>
+        <ul>
+          <li>
+            Becoming a member of our community (
+            <a
+              href="https://instagram.com/toplap_hk"
+              target="_blank"
+              rel="noopener noreferrer"
+              >@toplap_hk</a
+            >)
+          </li>
+          <li>Spreading the word, connecting us to your network.</li>
+          <li>
+            Providing equipment, venues or food for live coding performances,
+            workshops and meet-ups.
+          </li>
+          <li>
+            Contribute to this
+            <a
+              href="https://github.com/bytosaur/toplap-hk"
+              target="_blank"
+              rel="noopener noreferrer"
+              >website</a
+            >
+          </li>
+        </ul>
+      </section>
     </main>
-</body>
+  </body>
+  <script></script>
 </html>
