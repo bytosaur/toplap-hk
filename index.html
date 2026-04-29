@@ -278,28 +278,24 @@
         if (clickCount >= 3 && animate_count < max_animate_count) {
             glitch.loadImage('static/img/logo_smallest.jpeg',
                 () => {
-                    if (Math.random() < 0.9) {    
+                    if (Math.random() < Math.exp(-animate_count/10) + 0.2) { // more random at the beginning of animation
                         glitch.randomBytes(Math.random()*100); // randomize 10 bytes  
                     }      
+                    if (clickCount >= 10 && Math.random() < 0.1) {
+                        x = Math.random() * 200 - 100;
+                        y = Math.random() * 200 - 100;
+                    }
                     if (clickCount >= 8 && Math.random() < 0.4) {         
-                         glitch.replaceHex('ffdb00430101','ffdb004301'+Math.floor(Math.random()*65536).toString()); // colorful!
-
+                         glitch.replaceHex('ffdb00430101','ffdb004301'+Math.floor(Math.random()*255).toString()); // colorful!
                     }
                     if (clickCount >= 14 && Math.random() < 0.2) {
-                        glitch.replaceHex('ffdb00430001','ffdb004300'+Math.floor(Math.random()*65536).toString()); // jpg quant table
+                        glitch.replaceHex('ffdb00430001','ffdb004300'+Math.floor(Math.random()*255).toString()); // jpg quant table
                     }
                     if (clickCount >= 20 && Math.random() < 0.1) {
                         glitch.replaceBytes(Math.random() * 16, Math.random() * 255); // find + replace all
                     }
                     if (clickCount >= 25 && Math.random() < 0.1) {
                         glitch.replaceHex('ffd9','0000'); // jpg end of image
-                    }
-                    if (clickCount >= 30 && Math.random() < 0.1) {
-                        glitch.pixelate(0.9); // pixelate by 10%
-                    }
-                    if (clickCount >= 10 && Math.random() < 0.1) {
-                        x = Math.random() * 200 - 100;
-                        y = Math.random() * 200 - 100;
                     }
 
                     /* build and display image */
