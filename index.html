@@ -164,7 +164,7 @@
   </style>
   <body>
     <main>
-      <div id="title">TOPLAP<br />Hong Kong</div>
+      <h1 id="title">TOPLAP<br />Hong Kong</h1>
     <div id="sketch-holder" id="logo">
     <!-- Our sketch will go here! -->
     </div>
@@ -271,41 +271,48 @@
 
     let animate_count = 0;
     let max_animate_count = 30;
-
     function draw() {
-        let x = 0;
-        let y = 0;
         if (clickCount >= 3 && animate_count < max_animate_count) {
-            glitch.loadImage('static/img/logo_smallest.jpeg',
-                () => {
-                    if (Math.random() < Math.exp(-animate_count/10) + 0.2) { // more random at the beginning of animation
-                        glitch.randomBytes(Math.random()*100); // randomize 10 bytes  
-                    }      
-                    if (clickCount >= 8 && Math.random() < 0.4) {         
-                         glitch.replaceHex('ffdb00430101','ffdb004301'+Math.floor(Math.random()*255).toString()); // colorful!
-                    }
-                    if (clickCount >= 10 && Math.random() < 0.1) {
-                        x = Math.random() * 200 - 100;
-                        y = Math.random() * 200 - 100;
-                    }
-                    if (clickCount >= 14 && Math.random() < 0.2) {
-                        glitch.replaceHex('ffdb00430001','ffdb004300'+Math.floor(Math.random()*255).toString()); // jpg quant table
-                    }
-                    if (clickCount >= 20 && Math.random() < 0.1) {
-                        glitch.replaceBytes(Math.random() * 16, Math.random() * 255); // find + replace all
-                    }
-                    if (clickCount >= 25 && Math.random() < 0.1) {
-                        glitch.replaceHex('ffd9','0000'); // jpg end of image
-                    }
-
-                    /* build and display image */
-                    glitch.buildImage(); // creates image from glitched data
-                    image(glitch.image, x, y, canvas_size, canvas_size); // display glitched image  
-                }
-            ); 
+            // glitch.loadImage('static/img/logo_smallest.jpeg',
+            //     () => {
+            //       glitchhhh();
+            //     }
+            // ); 
+            setTimeout(glitchhhh, Math.random() * 600 + 100); // delay between frames
         }
         animate_count++;
     }
+
+    function glitchhhh() {
+            let x = 0;
+            let y = 0;
+            
+            glitch.resetBytes();
+
+            if (Math.random() < Math.exp(-animate_count/10) + 0.2) { // more random at the beginning of animation
+                glitch.randomBytes(Math.random()*100); // randomize 10 bytes  
+            }      
+            if (clickCount >= 8 && Math.random() < 0.4) {         
+                  glitch.replaceHex('ffdb00430101','ffdb004301'+Math.floor(Math.random()*255).toString()); // colorful!
+            }
+            if (clickCount >= 10 && Math.random() < 0.1) {
+                x = Math.random() * 200 - 100;
+                y = Math.random() * 200 - 100;
+            }
+            if (clickCount >= 14 && Math.random() < 0.2) {
+                glitch.replaceHex('ffdb00430001','ffdb004300'+Math.floor(Math.random()*255).toString()); // jpg quant table
+            }
+            if (clickCount >= 20 && Math.random() < 0.1) {
+                glitch.replaceBytes(Math.random() * 16, Math.random() * 255); // find + replace all
+            }
+            if (clickCount >= 25 && Math.random() < 0.1) {
+                glitch.replaceHex('ffd9','0000'); // jpg end of image
+            }
+
+            /* build and display image */
+            glitch.buildImage(); // creates image from glitched data
+            image(glitch.image, x, y, canvas_size, canvas_size); // display glitched image  
+      }
 
     // function draw () {
     //         glitch.resetBytes();
